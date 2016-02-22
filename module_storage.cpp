@@ -18,10 +18,15 @@ auto getModuleStorage(std::string filename) -> std::string {
       std::string extension = filename.substr(idx+1);
 #if USE_GZIP == ON
       if(extension=="gz") {
-        FILE *out;
+        FILE *in,*out;
+        in=fopen(filename.c_str(),"rb");
+        fseek(in, 0, SEEK_END);
+        fseek(in, -4, SEEK_CUR);
+        unsigned int len=0;
+        fread((void*)&len, 4, 1, in);
+        fclose(in);
         out=fopen(filename.substr(0,idx).c_str(), "wb");
         struct gzFile_s *file = gzopen(filename.c_str(),"rb");
-        size_t len=1024*1024;
         gzrewind(file);
         uint8_t *buf=new uint8_t[len];
         gzread(file, (void*)buf, len);
