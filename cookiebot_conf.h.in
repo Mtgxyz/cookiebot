@@ -1,2 +1,7 @@
 #define VERSION_MAJOR @cookiebot_VERSION_MAJOR@
 #define VERSION_MINOR @cookiebot_VERSION_MINOR@
+#define ON 1
+#define OFF 0
+#define USE_GZIP @MOD_GZIP@
+#define USE_BZIP2 @MOD_BZ2@
+#define USE_XZ @MOD_XZ@
