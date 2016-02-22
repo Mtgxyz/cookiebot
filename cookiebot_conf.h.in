@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @cookiebot_VERSION_MAJOR@
+#define VERSION_MINOR @cookiebot_VERSION_MINOR@
